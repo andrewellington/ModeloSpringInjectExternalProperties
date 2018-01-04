@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+   http://www.springframework.org/schema/beans/spring-beans-4.3.xsd">
+
+	<bean name="propertiesConfigrer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<value>classpath:br/com/spring/config/dados.properties</value>
+		</property>
+	</bean>
+
+	<bean name="endereco" class="br.com.spring.beans.BeanEndereco">
+		<property name="descricao" value="${endereco.descricao}" />
+		<property name="numero" value="${endereco.numero}" />
+		<property name="bairro" value="${endereco.bairro}" />
+	</bean>
+
+	<bean name="pessoa" class="br.com.spring.beans.BeanPessoa">
+		<property name="nome" value="${pessoa.nome}" />
+		<property name="fone" value="${pessoa.fone}" />
+		<property name="endereco" ref="endereco" />
+	</bean>
+
+</beans>
