@@ -1,14 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans
-   http://www.springframework.org/schema/beans/spring-beans-4.3.xsd">
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
 
+
+	<!--  #Metodo 1
+	Definido pelo bean, não precisa configura xmlns.
 	<bean name="propertiesConfigrer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
 		<property name="locations">
 			<value>classpath:br/com/spring/config/dados.properties</value>
 		</property>
-	</bean>
+	</bean>  -->
+	<!-- 
+	#Metodo 2
+	Mais simples, precisa configurar acima o xmlns:context e o schemaLocation
+	 -->
+	<context:property-placeholder location="classpath:br/com/spring/config/dados.properties"/>
+	
 
 	<bean name="endereco" class="br.com.spring.beans.BeanEndereco">
 		<property name="descricao" value="${endereco.descricao}" />
